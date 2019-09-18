@@ -1,0 +1,15 @@
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Clubber.Contracts.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Clubber.Contracts.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\obj\Debug\Clubber.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\obj\Debug\Clubber.Contracts.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\obj\Debug\Clubber.Contracts.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Clubber.Contracts.dll.config
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\EntityFramework.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\EntityFramework.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\obj\Debug\Clubber.Contracts.csproj.CopyComplete

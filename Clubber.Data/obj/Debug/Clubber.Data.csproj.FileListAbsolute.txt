@@ -1,0 +1,16 @@
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.csprojAssemblyReference.cache
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.csproj.CoreCompileInputs.cache
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Clubber.Data.dll.config
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Clubber.Data.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Clubber.Data.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\EntityFramework.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\EntityFramework.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.csproj.CopyComplete
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.pdb
