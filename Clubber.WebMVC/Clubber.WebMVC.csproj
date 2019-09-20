@@ -168,8 +168,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SponsorController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,9 +237,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Club\Index.cshtml" />
+    <Content Include="Views\Club\Create.cshtml" />
+    <Content Include="Views\Sponsor\Create.cshtml" />
+    <Content Include="Views\Sponsor\Index.cshtml" />
+    <Content Include="Views\Club\Edit.cshtml" />
+    <Content Include="Views\Club\Details.cshtml" />
+    <Content Include="Views\Club\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -255,6 +266,14 @@
     <ProjectReference Include="..\Clubber.Data\Clubber.Data.csproj">
       <Project>{EBEDC207-A494-4206-B98B-C293A7162C26}</Project>
       <Name>Clubber.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clubber.Models\Clubber.Models.csproj">
+      <Project>{930B03EA-FC81-4DC7-9CDE-1D9BC26DE4DF}</Project>
+      <Name>Clubber.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clubber.services\Clubber.Services.csproj">
+      <Project>{338B18AF-7C0C-4378-9686-8956C5BC062A}</Project>
+      <Name>Clubber.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

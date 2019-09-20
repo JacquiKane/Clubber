@@ -54,12 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ClubService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SponsorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Clubber.Data\Clubber.Data.csproj">
+      <Project>{ebedc207-a494-4206-b98b-c293a7162c26}</Project>
+      <Name>Clubber.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Clubber.Models\Clubber.Models.csproj">
+      <Project>{930b03ea-fc81-4dc7-9cde-1d9bc26de4df}</Project>
+      <Name>Clubber.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Clubber.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -30,6 +32,24 @@ namespace Clubber.Data
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Student> Students { get; set; }  //Students in clubs
+        public DbSet<Sponsor> Sponsors { get; set; }  // Sponsors of clubs
+        public DbSet<Club> Clubs { get; set; }        // All clubs
+        public DbSet<StudentAndClub> StudentClubs { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Conventions
+                .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder
+                .Configurations
+                .Add(new IdentityUserLoginConfiguration())
+                .Add(new IdentityUserRoleConfiguration());
+        }
+    
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
@@ -37,6 +57,14 @@ namespace Clubber.Data
         public IdentityUserLoginConfiguration()
         {
             HasKey(iul => iul.UserId);
+        }
+    }
+
+    public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+    {
+        public IdentityUserRoleConfiguration()
+        {
+            HasKey(iur => iur.UserId);
         }
     }
 }

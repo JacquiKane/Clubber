@@ -106,3 +106,9 @@ C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Microsoft.CodeDom.Provi
 C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\obj\Debug\Clubber.WebMVC.csproj.CopyComplete
 C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\obj\Debug\Clubber.WebMVC.dll
 C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\obj\Debug\Clubber.WebMVC.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Clubber.Models.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Clubber.Models.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Clubber.Models.dll.config
+C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Clubber.services.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Clubber.services.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.WebMVC\bin\Clubber.services.dll.config

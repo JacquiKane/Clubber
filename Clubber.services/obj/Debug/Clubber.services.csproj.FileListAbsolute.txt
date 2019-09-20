@@ -14,3 +14,9 @@ C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\EntityFramework
 C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Theresa\source\repos\Clubber\Clubber.services\obj\Debug\Clubber.services.csproj.CopyComplete
+C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Clubber.Data.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Clubber.Models.dll
+C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Clubber.Data.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Clubber.Data.dll.config
+C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Clubber.Models.pdb
+C:\Users\Theresa\source\repos\Clubber\Clubber.services\bin\Debug\Clubber.Models.dll.config
