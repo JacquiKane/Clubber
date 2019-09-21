@@ -80,6 +80,14 @@
     <Compile Include="Migrations\201909200027592_join33.Designer.cs">
       <DependentUpon>201909200027592_join33.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909201834086_KeysInJoinTab.cs" />
+    <Compile Include="Migrations\201909201834086_KeysInJoinTab.Designer.cs">
+      <DependentUpon>201909201834086_KeysInJoinTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909201901255_KeysInJoinTabSeed.cs" />
+    <Compile Include="Migrations\201909201901255_KeysInJoinTabSeed.Designer.cs">
+      <DependentUpon>201909201901255_KeysInJoinTabSeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sponsor.cs" />
@@ -108,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909200027592_join33.resx">
       <DependentUpon>201909200027592_join33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909201834086_KeysInJoinTab.resx">
+      <DependentUpon>201909201834086_KeysInJoinTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909201901255_KeysInJoinTabSeed.resx">
+      <DependentUpon>201909201901255_KeysInJoinTabSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

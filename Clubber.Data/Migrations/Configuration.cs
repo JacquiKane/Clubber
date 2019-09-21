@@ -19,13 +19,16 @@ namespace Clubber.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
+            context.Students.AddOrUpdate(
+                  p => p.FirstName,
+                  new Student { FirstName = "Andrew", LastName= "Peters" },
+                  new Student { FirstName = "Brice", LastName= "Lambson" },
+                  new Student { FirstName = "Rowan", LastName= "Miller" }
+                );
             //
+
         }
+
+
     }
 }

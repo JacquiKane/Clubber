@@ -13,7 +13,11 @@ namespace Clubber.Models
     {
         [Key]
         public int RelationshipId { get; set; }
+        [ForeignKey("Student")]
         public int StudentID { get; set; }
+        public virtual Student Student { get; set; }
+        [ForeignKey("Club")]
         public int ClubID {get; set;}
+        public virtual Club Club { get; set; }
     }
 }

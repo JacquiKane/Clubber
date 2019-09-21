@@ -155,6 +155,27 @@ namespace Clubber.services
 
             return sponsors.ToArray();
         }
+
+
+        // Absolutely in the wrong place!! Just a convenience method
+        // Clubs should not be able to add new students, as this is central to admin
+        public bool CreateStudent(Student model)
+        {
+            var entity =
+                new Student()
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Students.Add(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
     }
 }
     
