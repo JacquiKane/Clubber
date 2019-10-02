@@ -1,6 +1,7 @@
 ﻿using Clubber.Models;
 using Clubber.services;
 using Clubber.WebMVC.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +13,24 @@ namespace Clubber.WebMVC.Controllers
     public class ClubController : Controller
     {
         public enum AllDays {Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }
+ 
 
-        private readonly Guid _userId;
-
-        private ClubService CreateClubService(Guid userId)
+        private ClubService CreateClubService(Guid _userId)
         {
-            var service = new ClubService(userId);
+            var service = new ClubService(_userId);
             return service;
         }
+
+
+        private StudentProfileService CreateStudentProfileService(Guid userId)
+        {
+            var service = new StudentProfileService(userId);
+            return service;
+        }
+
+
+
+
         private SponsorService CreateSponsorService(Guid userId)
         {
             var service = new SponsorService(userId);
@@ -28,7 +39,11 @@ namespace Clubber.WebMVC.Controllers
         // GET: Clubs Index View
         public ActionResult Index()
         {
+            var res = HttpContext.User.IsInRole("Admin");
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateClubService(_userId);
+            var profileService = CreateStudentProfileService(_userId);
+            ViewBag.HasProfile = profileService.hasStudentProfile(_userId);
             var model =service.GetClubs();
             return View(model);
         }
@@ -36,6 +51,7 @@ namespace Clubber.WebMVC.Controllers
         // GET: Create Club
         public ActionResult Create()
         {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateSponsorService(_userId);
             var myList = service.GetSponsors();
             ViewBag.SponsorId = new SelectList(myList.ToList(),
@@ -49,7 +65,7 @@ namespace Clubber.WebMVC.Controllers
             return View();
         }
 
-        //Add code here vvvv
+        //Add code here 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ClubCreate model)
@@ -58,7 +74,7 @@ namespace Clubber.WebMVC.Controllers
             {
                 return View(model);
             }
-
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateClubService(_userId);
 
             if (service.CreateClub(model))
@@ -77,6 +93,7 @@ namespace Clubber.WebMVC.Controllers
 
         public ActionResult Edit(int id)
         {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateClubService(_userId);
             var detail = service.GetClubById(id);
             var model =
@@ -114,7 +131,7 @@ namespace Clubber.WebMVC.Controllers
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
-
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateClubService(_userId);
 
             if (service.UpdateClub(model))
@@ -131,6 +148,7 @@ namespace Clubber.WebMVC.Controllers
 
         public ActionResult Details(int id)
         {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var svc = CreateClubService(_userId);
             var model = svc.GetClubById(id);
 
@@ -141,6 +159,7 @@ namespace Clubber.WebMVC.Controllers
 
         public ActionResult Delete(int id)
         {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var svc = CreateClubService(_userId);
             var model = svc.GetClubById(id);
 
@@ -153,8 +172,8 @@ namespace Clubber.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeletePost(int id)
         {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateClubService(_userId);
-
 
             service.DeleteClub(id);
 
@@ -164,7 +183,60 @@ namespace Clubber.WebMVC.Controllers
         }
 
 
+        // Get : Join
+        public ActionResult Join(int id)
+        {
+            //var service = CreateClubService(_userId);
+            // Change the Db table to include student id? JoinClub already has this, as does student.
+            // How to relate student id to the user? Take this in from the register panel?
+            //service.CreateNewClubMember(id);
+            //return RedirectToAction("Index");
+            // Get the club name from the id
+            var _userId = Guid.Parse(User.Identity.GetUserId());
+            var service = CreateClubService(_userId);
+            ClubDetail club = service.GetClubById(id);
+            JoinClub clubToJoin = 
+                new JoinClub
+                    {
+                    StudentId = 0,
+                    ClubTitle = club.Title,
+                    ClubId = club.ClubId
+                    };
+            return View(clubToJoin);
 
+        }
+
+        // POST : Join Club
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Join(JoinClub model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var _userId = Guid.Parse(User.Identity.GetUserId());
+            var service = CreateClubService(_userId);
+
+            if (service.CreateNewClubMember(model.ClubId, model.StudentId))
+            {
+                TempData["SaveResult"] = "You have joined " + model.ClubTitle;
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Sorry, you could not join the club");
+
+            return View();
+        }
+
+
+        public ActionResult ListMembers(int id)
+        {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
+            var service = CreateClubService(_userId);
+            var models = service.GetMembersOfClub(id);
+            return View(models);
+        }
 
     }
 }

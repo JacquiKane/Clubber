@@ -4,6 +4,7 @@
 }
 
 <h2>@ViewBag.Title.</h2>
+<div id="msg"></div>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -17,25 +18,77 @@
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+        </div>
+    </div>
+
+
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
+
+
+
+
+
     <div class="form-group">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.Label("user Role", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @*@Html.DropDownList("Name")*@
+            @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
+        </div>
+    </div>
+
+    <div id="SID_FIELD">
+
+    </div>
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
+
+
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#UserRoles").on("change",
+            function () {
+            //    var sid_edit = '<input type="text" class="items" id ="StudentIdField" name="StudentIdField" required = "required"class = "form-control"/> ';
+   var sid_edit = '<div class="form-group" id="sid">@Html.LabelFor(m => m.StudentId, new { @class = "col-md-2 control-label" })<div class="col-md-10">@Html.TextBoxFor(m => m.StudentId, new { @class = "form-control" })</div></div>';
+                //var sid_label = '<label for="StudentIdField" id = "StudentIdLabel" class = "col-md-2 control-label">Student Id  </label>';
+                var selectedRole = this.value;
+                if (selectedRole == "Student") {
+                    document.getElementById("msg").innerHTML = selectedRole;                   
+                    $("#SID_FIELD").append(sid_edit);
+                }
+                else {
+                    document.getElementById("msg").innerHTML = selectedRole;
+                    var parent = document.getElementById("SID_FIELD");
+                    var childEdit = document.getElementById("sid");                   
+                    parent.removeChild(childEdit);
+                    //$("#SID_FIELD").remove(n);
+                }
+                });
+                
+    </script>
+
 }

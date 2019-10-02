@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClubService.cs" />
+    <Compile Include="ClubMemberService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SponsorService.cs" />
+    <Compile Include="StudentProfileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -13,10 +13,13 @@ namespace Clubber.Data
         [Key]
         public int SponsorId { get; set; }
         [Required]
+        [Display(Name="Background Check On File")]
         public bool BackGroundCheck { get; set; }
         [Required]
+        [Display(Name = "Name")]
         public String FirstName { get; set; }
         [Required]
+        [Display(Name = "Surname")]
         public String LastName { get; set; }
         public String FullName
         {

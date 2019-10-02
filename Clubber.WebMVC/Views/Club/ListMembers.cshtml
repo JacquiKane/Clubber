@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Clubber.Data.Student>
+
+
+<table class="table listFonts">
+    <tr class="listHeaderFonts">
+        <th>
+            @Html.DisplayNameFor(model => model.StudentFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactEMail)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactEMail)
+        </td>
+        
+    </tr>
+}
+
+</table>

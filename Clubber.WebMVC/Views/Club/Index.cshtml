@@ -1,15 +1,26 @@
 ﻿@model IEnumerable<Clubber.Models.ClubListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Our Clubs";
+    var hasProfile = ViewBag.HasProfile;
 }
 
-<h2>Index</h2>
+<h2 class="headingFonts">Our Clubs. See anything you like?</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+    else
+    {
+        if (!(hasProfile))
+        {
+        @Html.ActionLink("Create a profile to join clubs", "Create", "StudentProfile")
+        }
+    }
 </p>
-<table class="table">
+<table class="table listFonts">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ClubId)
@@ -46,11 +57,29 @@
     <td>
         @Html.DisplayFor(modelItem => item.MeetingTime)
     </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ClubId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ClubId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ClubId })
-    </td>
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ClubId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClubId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClubId }) |
+            @Html.ActionLink("Members", "ListMembers", new { id = item.ClubId })
+        </td>
+    }
+    else if (ViewContext.HttpContext.User.IsInRole("Student"))
+    {
+        <td>
+            @if (hasProfile)
+            {
+                
+                @Html.ActionLink("Join", "Join", new { id = item.ClubId })
+            }
+        </td>
+    }
+    else if (ViewContext.HttpContext.User.IsInRole("Sponsor"))
+    {
+        @Html.ActionLink("Take Attendance", "Join", new { id = item.ClubId })
+    }
 </tr>
 }
 

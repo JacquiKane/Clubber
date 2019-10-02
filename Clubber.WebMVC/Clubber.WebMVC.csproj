@@ -169,10 +169,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\ClubMemberController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SponsorController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentProfileController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,9 +186,40 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\background1.jpg" />
+    <Content Include="Assets\background2.jpg" />
+    <Content Include="Assets\background3.jpg" />
+    <Content Include="Assets\background4.jpg" />
+    <Content Include="Assets\favicon.ico" />
     <Content Include="Assets\Clubs.png" />
     <Content Include="Assets\redclubs.jpg" />
     <Content Include="Assets\sponsor.jpg" />
+    <Content Include="Assets\ssfavicon\android-icon-144x144.png" />
+    <Content Include="Assets\ssfavicon\android-icon-192x192.png" />
+    <Content Include="Assets\ssfavicon\android-icon-36x36.png" />
+    <Content Include="Assets\ssfavicon\android-icon-48x48.png" />
+    <Content Include="Assets\ssfavicon\android-icon-72x72.png" />
+    <Content Include="Assets\ssfavicon\android-icon-96x96.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-114x114.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-120x120.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-144x144.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-152x152.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-180x180.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-57x57.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-60x60.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-72x72.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-76x76.png" />
+    <Content Include="Assets\ssfavicon\apple-icon-precomposed.png" />
+    <Content Include="Assets\ssfavicon\apple-icon.png" />
+    <Content Include="Assets\ssfavicon\browserconfig.xml" />
+    <Content Include="Assets\ssfavicon\favicon-16x16.png" />
+    <Content Include="Assets\ssfavicon\favicon-32x32.png" />
+    <Content Include="Assets\ssfavicon\favicon-96x96.png" />
+    <Content Include="Assets\ssfavicon\favicon.ico" />
+    <Content Include="Assets\ssfavicon\ms-icon-144x144.png" />
+    <Content Include="Assets\ssfavicon\ms-icon-150x150.png" />
+    <Content Include="Assets\ssfavicon\ms-icon-310x310.png" />
+    <Content Include="Assets\ssfavicon\ms-icon-70x70.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -195,6 +230,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Assets\ssfavicon\manifest.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -247,9 +283,18 @@
     <Content Include="Views\Club\Edit.cshtml" />
     <Content Include="Views\Club\Details.cshtml" />
     <Content Include="Views\Club\Delete.cshtml" />
+    <Content Include="Views\User\Users.cshtml" />
+    <Content Include="Views\Account\Users.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Club\Join.cshtml" />
+    <Content Include="Views\StudentProfile\Create.cshtml" />
+    <Content Include="Views\ClubMember\Index.cshtml" />
+    <Content Include="Views\Club\ListMembers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Member\" />
     <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>

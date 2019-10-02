@@ -18,8 +18,8 @@ namespace Clubber.Data
             [ForeignKey("Sponsor")]
             public int SponsorId { get; set; }
             public virtual Sponsor Sponsor { get; set; }
-
-            public DayOfWeek MeetingDay { get; set; }
+        [Display(Name = "Meeting Day")]
+        public DayOfWeek MeetingDay { get; set; }
 
             [Required]
             [DataType(DataType.Time)]

@@ -88,11 +88,32 @@
     <Compile Include="Migrations\201909201901255_KeysInJoinTabSeed.Designer.cs">
       <DependentUpon>201909201901255_KeysInJoinTabSeed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909241626588_changedstudent.cs" />
+    <Compile Include="Migrations\201909241626588_changedstudent.Designer.cs">
+      <DependentUpon>201909241626588_changedstudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241642159_emailAsString.cs" />
+    <Compile Include="Migrations\201909241642159_emailAsString.Designer.cs">
+      <DependentUpon>201909241642159_emailAsString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909241644123_NoDOB.cs" />
+    <Compile Include="Migrations\201909241644123_NoDOB.Designer.cs">
+      <DependentUpon>201909241644123_NoDOB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909242236544_withProfile.cs" />
+    <Compile Include="Migrations\201909242236544_withProfile.Designer.cs">
+      <DependentUpon>201909242236544_withProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909242314040_Hobbies.cs" />
+    <Compile Include="Migrations\201909242314040_Hobbies.Designer.cs">
+      <DependentUpon>201909242314040_Hobbies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sponsor.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentAndClub.cs" />
+    <Compile Include="StudentProfile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -122,6 +143,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909201901255_KeysInJoinTabSeed.resx">
       <DependentUpon>201909201901255_KeysInJoinTabSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241626588_changedstudent.resx">
+      <DependentUpon>201909241626588_changedstudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241642159_emailAsString.resx">
+      <DependentUpon>201909241642159_emailAsString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909241644123_NoDOB.resx">
+      <DependentUpon>201909241644123_NoDOB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909242236544_withProfile.resx">
+      <DependentUpon>201909242236544_withProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909242314040_Hobbies.resx">
+      <DependentUpon>201909242314040_Hobbies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,10 +20,11 @@ namespace Clubber.Data.Migrations
             //  to avoid creating duplicate seed data. E.g.
             //
             context.Students.AddOrUpdate(
-                  p => p.FirstName,
-                  new Student { FirstName = "Andrew", LastName= "Peters" },
-                  new Student { FirstName = "Brice", LastName= "Lambson" },
-                  new Student { FirstName = "Rowan", LastName= "Miller" }
+                  p => p.StudentFirstName,
+                  new Student { StudentFirstName = "Andrew", StudentLastName= "Peters", StudentId = 11 },
+                  new Student { StudentFirstName = "Brice", StudentLastName= "Lambson", StudentId = 12 },
+                  new Student { StudentFirstName = "Rowan", StudentLastName= "Miller", StudentId = 13 },
+                  new Student { StudentFirstName = "Rosie", StudentLastName = "Fitzgerald", StudentId = 14 }
                 );
             //
 

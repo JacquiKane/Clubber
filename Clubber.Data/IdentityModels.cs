@@ -37,6 +37,7 @@ namespace Clubber.Data
         public DbSet<Sponsor> Sponsors { get; set; }  // Sponsors of clubs
         public DbSet<Club> Clubs { get; set; }        // All clubs
         public DbSet<StudentAndClub> StudentClubs { get; set; }
+        public DbSet<StudentProfile> StudentProfiles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

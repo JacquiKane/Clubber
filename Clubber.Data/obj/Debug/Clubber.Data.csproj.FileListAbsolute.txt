@@ -23,3 +23,8 @@ C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrat
 C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.join33.resources
 C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.KeysInJoinTab.resources
 C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.KeysInJoinTabSeed.resources
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.changedstudent.resources
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.emailAsString.resources
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.NoDOB.resources
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.withProfile.resources
+C:\Users\Theresa\source\repos\Clubber\Clubber.Data\obj\Debug\Clubber.Data.Migrations.Hobbies.resources

@@ -13,3 +13,4 @@ C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\EntityFramewor
 C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\obj\Debug\Clubber.Contracts.csproj.CopyComplete
+C:\Users\Theresa\source\repos\Clubber\Clubber.Contracts\obj\Debug\Clubber.Contracts.csprojAssemblyReference.cache

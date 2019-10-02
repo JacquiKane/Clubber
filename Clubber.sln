@@ -15,13 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clubber.Test", "Clubber.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clubber.Contracts", "Clubber.Contracts\Clubber.Contracts.csproj", "{C5071F5F-1FA9-4605-B106-AFD3C8109377}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{2E4A93A7-1F01-4BE4-B10B-A3F6437DD8D9}"
-	ProjectSection(SolutionItems) = preProject
-		Clubs.png = Clubs.png
-		redclubs.jpg = redclubs.jpg
-		sponsor.jpg = sponsor.jpg
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

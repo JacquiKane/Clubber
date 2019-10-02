@@ -2,6 +2,7 @@
 using Clubber.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,25 @@ namespace Clubber.services
         {
             _userId = userId;
         }
+
+        public bool CreateNewClubMember(int clubId, int studentId)
+        {
+            var entity =
+                new StudentAndClub() {
+                    // Should there be a student id related to the login?
+                    //StudentID = UserId? Enabled this by creating
+                    // a student profile
+
+                    ClubID = clubId,
+                    StudentID = studentId
+                    };
+                using (var ctx = new ApplicationDbContext())
+                    {
+                        ctx.StudentClubs.Add(entity);
+                        return ctx.SaveChanges() == 1;
+                    }
+        }
+
 
         public bool CreateClub(ClubCreate model)
         {
@@ -72,7 +92,8 @@ namespace Clubber.services
                                     Title = e.Title,
                                     MeetingDay = e.MeetingDay,
                                     MeetingTime = e.MeetingTime,
-                                    SponsorName = e.Sponsor.FirstName + " " + e.Sponsor.LastName
+                                    SponsorName = e.Sponsor.FirstName + " " + e.Sponsor.LastName,
+                                    // IsMemberOf NEEDS TO BE DONE
                                 }
                         );
                 var allItems = query.ToArray();
@@ -164,8 +185,8 @@ namespace Clubber.services
             var entity =
                 new Student()
                 {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName
+                    StudentFirstName = model.StudentFirstName,
+                    StudentLastName = model.StudentLastName
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -176,7 +197,67 @@ namespace Clubber.services
         }
 
 
+
+        private Student GetStudentById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+
+                var hasEntity =
+                    ctx
+                        .Students
+                        .Any(e => e.StudentId == id);
+
+                if (!(hasEntity))
+                    return null;
+
+                var entity =
+                    ctx
+                     .Students
+                     .Single(e => e.StudentId == id);
+
+
+
+                return entity;
+
+            }
+        }
+
+        public IEnumerable<Student> GetMembersOfClub(int id)
+        {
+            var ctx = new ApplicationDbContext();
+
+            var query =
+               ctx
+                   .StudentClubs
+                   .Where(e => e.ClubID == id).ToArray();
+            var query2 = ctx.StudentClubs.ToArray(); ;
+
+
+            List<Student> studentsInClub =
+                    new List<Student>();
+                foreach (StudentAndClub member in query)
+                {
+                Student student = member.Student;
+                studentsInClub.Add(member.Student);
+                }
+            return studentsInClub;
+        }
+
+        public bool isAMember(int StudentId, int ClubId)
+        {
+            var ctx = new ApplicationDbContext();
+
+            var query =
+               ctx
+                   .StudentClubs
+                   .Single(e => e.ClubID == ClubId && e.StudentID == StudentId);
+
+            return (query == null);
+        }
     }
+
+  
 }
     
 

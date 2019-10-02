@@ -10,18 +10,26 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Clubber.WebMVC.Models;
 using Clubber.Data;
+using Clubber.services;
+using Clubber.Models;
 
 namespace Clubber.WebMVC.Controllers
 {
+
+
+
     [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext context;
 
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
+
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
@@ -63,7 +71,7 @@ namespace Clubber.WebMVC.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Account/Login   
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -74,9 +82,9 @@ namespace Clubber.WebMVC.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            // This doesn't count login failures towards account lockout   
+            // To enable password failures to trigger account lockout, change to shouldLockout: true   
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -92,18 +100,31 @@ namespace Clubber.WebMVC.Controllers
             }
         }
 
-        //
-        // GET: /Account/VerifyCode
+        //   
+        // GET: /Account/VerifyCode   
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            // Require that the user has already logged in via username/password or external login
+            // Require that the user has already logged in via username/password or external login   
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
+
+        //
+        // GET: /Account/VerifyCode
+        //[AllowAnonymous]
+        //public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
+        //{
+        //    // Require that the user has already logged in via username/password or external login
+        //    if (!await SignInManager.HasBeenVerifiedAsync())
+        //    {
+        //        return View("Error");
+        //    }
+        //    return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe  rememberMe });
+        //}
 
         //
         // POST: /Account/VerifyCode
@@ -135,16 +156,26 @@ namespace Clubber.WebMVC.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
+
+        // ----------- Change for roles ----
+        // GET: /Account/Register   
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                                            .ToList(), "Name", "Name");
             return View();
         }
 
+        //-----------------------------------------------------
         //
-        // POST: /Account/Register
+        // GET: /Account/Register
+        //[AllowAnonymous]
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
+        // POST: /Account/Register   
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -152,26 +183,86 @@ namespace Clubber.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    return RedirectToAction("Index", "Home");
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771   
+                    // Send an email with this link   
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);   
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);   
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
+                    //Assign Role to user Here      
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    //Ends Here 
+
+
+                    // Sept 15th 2019 - Create a user profile object here, if student Id present
+                    // -------------------------------------------------------
+                    // RegisterViewModel obj comes in with studentId
+                    // -------------------------------------------------------
+                    //Guid globalId = Guid.Parse(User.Identity.GetUserId());
+                    Guid globalId = Guid.Parse(user.Id);
+                    var service = new StudentProfileService(globalId);
+
+                    // Create a new student profile
+                    
+                    service.CreateProfile(new StudentProfileCreate()
+                    {
+                        UserId = globalId,
+                        StudentId = model.StudentId,
+                        Hobby1 = "",
+                        Hobby2 = "",
+                        Hobby3 = ""
+                    });
+
+                    ViewBag.HasProfile = true;
+
+
+                    //return RedirectToAction("Index", "User");
+                    return RedirectToAction("Index", "Club");
                 }
+                ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                                          .ToList(), "Name", "Name");
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
+            // If we got this far, something failed, redisplay form  
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
+                           .ToList(), "Name", "Name");
             return View(model);
         }
+        //
+        // POST: /Account/Register
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        // public async Task<ActionResult> Register(RegisterViewModel model)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+        //         var result = await UserManager.CreateAsync(user, model.Password);
+        //         if (result.Succeeded)
+        //         {
+        //             await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+        //             
+        //             // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        // Send an email with this link
+        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+        //               return RedirectToAction("Index", "Home");
+        //           }
+        //           AddErrors(result);
+        //       }
+
+        // If we got this far, something failed, redisplay form
+        //       return View(model);
+        //   }
 
         //
         // GET: /Account/ConfirmEmail

@@ -58,9 +58,14 @@
     <Compile Include="ClubEdit.cs" />
     <Compile Include="ClubCreate.cs" />
     <Compile Include="ClubListItem.cs" />
+    <Compile Include="JoinClub.cs" />
+    <Compile Include="MemberDetailView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SponsorCreateView.cs" />
     <Compile Include="SponsorListItem.cs" />
+    <Compile Include="StudentDetailView.cs" />
+    <Compile Include="StudentJoinClubView.cs" />
+    <Compile Include="StudentProfileCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
