@@ -23,5 +23,7 @@ namespace Clubber.Models
         [Display(Name = "Meeting Time")]
         public DateTime MeetingTime { get; set; }
         public bool IsMemberOf {get; set;}
+        [Display(Name = "Club Category")]
+        public Club_Category ClubType { get; set; }
     }
 }

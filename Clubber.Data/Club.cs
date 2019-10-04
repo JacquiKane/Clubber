@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Clubber.Data
 {
+    public enum Club_Category { Arts, Books, Academic, Games, Social, Humanitarian, Food, International}
     public class Club
     {
             [Key]         
@@ -18,12 +19,18 @@ namespace Clubber.Data
             [ForeignKey("Sponsor")]
             public int SponsorId { get; set; }
             public virtual Sponsor Sponsor { get; set; }
-        [Display(Name = "Meeting Day")]
-        public DayOfWeek MeetingDay { get; set; }
+
+            [Display(Name = "Meeting Day")]
+            public DayOfWeek MeetingDay { get; set; }
 
             [Required]
             [DataType(DataType.Time)]
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:H:mm}")]
             public DateTime MeetingTime { get; set; }
+
+            [Required]
+            [Display(Name="Club Category")]
+            public Club_Category ClubType { get; set; }
+            
     }
 }

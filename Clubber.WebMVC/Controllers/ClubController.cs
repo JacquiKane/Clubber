@@ -54,14 +54,17 @@ namespace Clubber.WebMVC.Controllers
             var _userId = Guid.Parse(User.Identity.GetUserId());
             var service = CreateSponsorService(_userId);
             var myList = service.GetSponsors();
-            ViewBag.SponsorId = new SelectList(myList.ToList(),
-                                                "SponsorId",
-                                                "FullName");
+
+            //ClubCreate newModel = new ClubCreate();
+            ViewBag.SponsorId = new SelectList(myList.ToList(),   // List of items
+                                               "SponsorId",       // Data Value Field to be bound    
+                                               "FullName");       // Data Text Field to be shown
             var days = Enum.GetValues(typeof(AllDays));
 
             ViewBag.Days = new SelectList(days,
-                                    "Days");
-            var temp = ViewBag.CategoryID;
+                                          "Days");
+
+             
             return View();
         }
 
@@ -70,16 +73,24 @@ namespace Clubber.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ClubCreate model)
         {
+            var _userId = Guid.Parse(User.Identity.GetUserId());
+
+            var service = CreateClubService(_userId);
+
+            var myList = service.GetSponsors();
+            ViewBag.SponsorId = new SelectList(myList.ToList(),   // List of items
+                                                "SponsorId",      // Data Value Field    
+                                                "FullName");      // Data Text Field
+
+           
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            var _userId = Guid.Parse(User.Identity.GetUserId());
-            var service = CreateClubService(_userId);
 
             if (service.CreateClub(model))
             {
-                // ViewBag.SaveResult = "Your note was created";
+                // ViewBag.SaveResult = "Your club created";
                 TempData["SaveResult"] = "This club was created";
                 return RedirectToAction("Index");
             }

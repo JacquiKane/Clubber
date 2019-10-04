@@ -43,7 +43,7 @@ namespace Clubber.services
                 new Club() {
                     Title = model.Title,
                     MeetingDay = model.MeetingDay,
-                    MeetingTime = model.MeetingTime,
+                    MeetingTime = model.Time,
                     SponsorId = model.SponsorId,
                  //   Sponsor= model.Sponsor
                 };

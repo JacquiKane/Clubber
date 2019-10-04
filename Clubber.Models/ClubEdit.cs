@@ -25,5 +25,8 @@ namespace Clubber.Models
         [ForeignKey("Sponsor")]
         public int SponsorId { get; set; }
         public virtual Sponsor Sponsor { get; set; }
+        [Required]
+        [Display(Name = "Club Category")]
+        public Club_Category ClubType { get; set; }
     }
 }
